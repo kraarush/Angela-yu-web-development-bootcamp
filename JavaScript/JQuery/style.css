@@ -1,0 +1,13 @@
+.new-class{
+    background-color: red;
+    font-size: 5rem;
+}
+
+.old-class{
+    background-color: pink;
+    font-family: cursive ;
+}
+
+button{
+    display: block;
+}
