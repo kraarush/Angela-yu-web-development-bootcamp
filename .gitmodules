@@ -1,3 +1,3 @@
-[submodule "public api capstone_project"]
-	path = public api capstone_project
+[submodule "public_api_capstone_project"]
+	path = public_api_capstone_project
 	url = https://github.com/coderaark12/Joke-Time
