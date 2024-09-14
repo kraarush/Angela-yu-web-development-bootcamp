@@ -2,30 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = 3000;
+const port = 4000;
 const masterKey = "4VGP2DN-6EWM4SJ-N6FGRHV-Z3PR3TT";
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-//1. GET a random joke
-
-//2. GET a specific joke
-
-//3. GET a jokes by filtering on the joke type
-
-//4. POST a new joke
-
-//5. PUT a joke
-
-//6. PATCH a joke
-
-//7. DELETE Specific joke
-
-//8. DELETE All jokes
-
-app.listen(port, () => {
-  console.log(`Successfully started server on port ${port}.`);
-});
 
 var jokes = [
   {
@@ -599,3 +577,145 @@ var jokes = [
     jokeType: "Food",
   },
 ];
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//1. GET a random joke
+app.get("/random", (req, res) => {
+  const joke = jokes[Math.floor(Math.random() * jokes.length)];
+  if (!joke) {
+    res.status(200).send("No jokes yet");
+  }
+  else res.send(joke);
+})
+
+//2. GET a specific joke
+app.get('/jokes/:id', (req, res) => {
+  try {
+    // const id = req.params.id;   // params return string and hence it will not work as we require id to be integer
+    const id = parseInt(req.params.id);
+    const joke = jokes.find(j => j.id === id);
+    if (!joke) {
+      res.status(404).send("Joke not found");
+    }
+    else res.send(joke);
+  }
+  catch (err) {
+    res.status(200).send(err);
+  }
+});
+
+//3. GET a jokes by filtering on the joke type
+app.get('/filter', (req, res) => {
+  try {
+    const type = req.query.type;
+    console.log(type);
+    const joke = jokes.filter((j) => j.jokeType === type);
+    console.log(joke);
+    if (!joke) {
+      res.status(404).send("Joke not found");
+    }
+    else res.status(200).send(joke);
+  }
+  catch (err) {
+    res.send(err);
+  }
+});
+
+//4. POST a new joke
+app.post('/jokes', (req, res) => {
+  try {
+    const { text, type } = req.body;
+    const n = jokes.length + 1;
+    const joke = { id: n, text, type };
+    console.log(jokes);
+    jokes.push(joke);
+    console.log(jokes);
+    res.status(200).send("Joke added successfully");
+  }
+  catch (err) {
+    res.send(err);
+  }
+});
+
+//5. PUT a joke
+app.put("/jokes/:id", (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const { text, type } = req.body;
+    const joke = jokes.find(j => j.id === id);
+
+    if (!joke) {
+      res.status(404).send("Joke not found");
+    }
+    else {
+      joke.jokeText = text;
+      joke.jokeType = type;
+      res.status(200).send("Joke updated successfully");
+    }
+  }
+  catch (err) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//6. PATCH a joke
+app.patch("/jokes/:id", (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const joke = jokes.find(j => j.id === id);
+
+    if (!joke) {
+      res.status(404).send("Joke not found");
+    }
+    else {
+      const { text, type } = req.body;
+      if (text) joke.jokeText = text;
+      if (type) joke.jokeType = type;
+      res.status(200).send("Joke updated successfully");
+    }
+  }
+  catch (err) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//7. DELETE Specific joke
+app.delete("/jokes/:id", (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const joke = jokes.find(j => j.id === id);
+    const index = jokes.findIndex(j => j.id === id);
+
+    if (!joke) {
+      res.status(404).send("Joke not found");
+    }
+    else {
+      jokes.splice(index, 1);
+      res.status(200).send("Joke deleted successfully");
+    }
+  }
+  catch (err) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//8. DELETE All jokes
+app.delete("/all", (req, res) => {
+  try {
+
+    if (req.query.masterKey === masterKey) {
+      jokes = [];
+      res.status(200).send("All jokes Deleted");
+    }
+    else res.status(200).send("Unauthorized login");
+
+  }
+  catch (err) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Successfully started server on port ${port}.`);
+});
