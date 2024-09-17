@@ -1,8 +1,19 @@
 import express from "express";
 import bodyParser from "body-parser";
+import pg from "pg";
 
 const app = express();
 const port = 3000;
+
+const db = new pg.Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'Angela Yu Course',
+  password: 'aarush',
+  port: 5432,
+});
+
+db.connect();
 
 let quiz = [
   { country: "France", capital: "Paris" },
@@ -10,13 +21,22 @@ let quiz = [
   { country: "United States of America", capital: "New York" },
 ];
 
+db.query("SELECT * FROM capitals", (err,res) => {
+  if(err){
+    console.log(err.message);
+  }
+  else {
+    quiz = res.rows;
+  }
+  db.end();
+});
+
 let totalCorrect = 0;
+let currentQuestion = {};
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
-let currentQuestion = {};
 
 // GET home page
 app.get("/", async (req, res) => {
@@ -32,7 +52,6 @@ app.post("/submit", (req, res) => {
   let isCorrect = false;
   if (currentQuestion.capital.toLowerCase() === answer.toLowerCase()) {
     totalCorrect++;
-    console.log(totalCorrect);
     isCorrect = true;
   }
 
@@ -46,7 +65,6 @@ app.post("/submit", (req, res) => {
 
 async function nextQuestion() {
   const randomCountry = quiz[Math.floor(Math.random() * quiz.length)];
-
   currentQuestion = randomCountry;
 }
 
