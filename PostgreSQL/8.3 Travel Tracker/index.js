@@ -9,6 +9,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 let visCountries = [];
+var isFound = true;
+var isPresent = false;
+var error = "";
 
 const db = new pg.Client({
   user: "postgres",
@@ -18,26 +21,22 @@ const db = new pg.Client({
   port: 5432,
 });
 
-async function connectDB() {
-  await db.connect();
-}
-
-async function getTable() {
-  try {
-    const result = await db.query("SELECT visited FROM visitedcountries");
-    visCountries = result.rows.map(country => country.visited);
-  } catch (err) {
-    console.error('Error executing query', err.stack);
-  }
-}
+db.connect();
 
 app.get("/", async (req, res) => {
   try {
-    await getTable();
-    console.log(visCountries);
+    const result = await db.query("SELECT visited FROM visitedcountries");
+    // visCountries = result.rows.map(country => country.visited);
+    var visCountries = [];
+    result.rows.forEach(element => {
+      visCountries.push(element.visited)
+    });
 
     let totalCountries = visCountries.length;
     res.render("index.ejs", {
+      isFound: isFound,
+      isPresent: isPresent,
+      error: error,
       total: totalCountries,
       countries: visCountries,
     });
@@ -48,17 +47,29 @@ app.get("/", async (req, res) => {
 
 app.post('/add', async (req,res) => {
   try{
-    const code = req.body.country.toUpperCase();;
-    const query = `INSERT INTO visitedcountries(visited) VALUES ('${code}');`;
-    const result = await db.query(query);
+    var country = req.body.country.toLowerCase();
+
+    const check = await db.query("select country_code from countries where LOWER(country_name) like $1 || '%' ",[country]);
+    if(check.rows.length == 0) isFound = false;
+    else isFound = true;
+    const code = check.rows[0].country_code;
+    try{
+      await db.query(`INSERT INTO visitedcountries(visited) VALUES ('${code}');`);
+      isPresent = false;
+    }
+    catch(err){
+      error = "Country already present";
+      isPresent = true;
+    }
+    if(error.length == 0) error = "";
     res.redirect('/');
   }
   catch(err){
-    console.log(err);
+    error = "Country not found";
+    res.status(404).redirect('/');
   }
 });
 
 app.listen(port, async () => {
-  await connectDB();
   console.log(`Server running on http://localhost:${port}`);
 });
