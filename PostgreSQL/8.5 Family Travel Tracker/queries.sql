@@ -18,6 +18,7 @@ INSERT INTO contact_detail (id, tel, address)
 VALUES (1, '+123456789', '123 App Brewery Road');
 
 -- Join --
+-- basically using the inner join and performing one to one relationship
 SELECT * 
 FROM student
 JOIN contact_detail
@@ -78,6 +79,7 @@ SELECT student.id AS id, first_name, last_name, title
 FROM enrollment 
 JOIN student ON student.id = enrollment.student_id
 JOIN class ON class.id = enrollment.class_id;
+
 
 -- ALIAS --
 SELECT s.id AS id, first_name, last_name, title
