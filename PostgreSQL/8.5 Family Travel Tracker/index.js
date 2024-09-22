@@ -86,7 +86,6 @@ app.post("/user", async (req, res) => {
   else {
     res.redirect('/');
   }
-
 });
 
 app.post("/new", async (req, res) => {
