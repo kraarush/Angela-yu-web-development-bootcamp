@@ -26,9 +26,9 @@
         
       </nav>
 
-      <% if(locals.demoData){ %>
-          <div class="container text-center mb-4 text-danger">
-            <h2>This is Demo data and is not present in the database</h2>
+      <% if(locals.isEmpty){ %>
+          <div class="container text-center mb-4 text-primary">
+            <h2>Sorry dont have any book reviews yet</h2>
           </div>
       <% } %>
       
