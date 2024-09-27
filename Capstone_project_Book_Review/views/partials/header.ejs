@@ -14,17 +14,21 @@
   </head>
 
   <body>
-    <main>
+    <main class="bg-success-subtle">
       
       <nav class="navbar navbar-expand-lg bg-dark mb-3">
         <div class="container-fluid d-flex align-items-center">
           <img src="/Images/logo.webp" alt="Logo" style="height: 70px;" />
           <a class="navbar-brand text-white fs-2 ms-3 me-auto" href="/">Booklytic</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
         </div>
+        
         <a class="navbar-brand text-white" href="/add">Add Review</a>
         
       </nav>
+
+      <% if(locals.demoData){ %>
+          <div class="container text-center mb-4 text-danger">
+            <h2>This is Demo data and is not present in the database</h2>
+          </div>
+      <% } %>
       
