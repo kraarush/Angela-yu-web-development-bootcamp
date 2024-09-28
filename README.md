@@ -102,6 +102,14 @@ Throughout this course, I have gained knowledge and experience in:
     ``` bash
     git submodule update --init 
 
+3. Install the dependencies:
+    ```bash
+    npm install
+
+4. Start the server
+   ```bash
+   nodemon <serverFileName.js>
+
 ## Acknowledgments
 
 A special thanks to Angela Yu for her excellent teaching and engaging course materials.
