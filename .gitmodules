@@ -1,19 +1,18 @@
-[submodule "public_api_capstone_project"]
-	path = public_api_capstone_project
-	url = https://github.com/coderaark12/Joke-Time
-[submodule "Booklytic"]
-	path = Booklytic
-	url = https://github.com/coderaark12/Booklytic.git
-[submodule "Blog Writing Project"]
-	path = Blog Writing Project
-	url = https://github.com/coderaark12/Blog-API-Project.git
-[submodule "Drum Game"]
-	path = Drum Game
-	url = https://github.com/coderaark12/Simple-Drum-Game.git
-[submodule "Dice Game"]
-	path = Dice Game
-	url = https://github.com/coderaark12/Dice-Game-.git
-
 [submodule "Projects/Band Name Generator"]
 	path = Projects/Band Name Generator
 	url = https://github.com/coderaark12/Band-Name-Generator.git
+[submodule "Projects/Booklytic"]
+	path = Projects/Booklytic
+	url = https://github.com/coderaark12/Booklytic.git
+[submodule "Projects/Joke-Time"]
+	path = Projects/Joke-Time
+	url = https://github.com/coderaark12/Joke-Time.git
+[submodule "Projects/Blog-Website"]
+	path = Projects/Blog-Website
+	url = https://github.com/coderaark12/Blog-API-Project.git
+[submodule "Projects/Drum-Game"]
+	path = Projects/Drum-Game
+	url = https://github.com/coderaark12/Simple-Drum-Game.git
+[submodule "Projects/Dice-Game"]
+	path = Projects/Dice-Game
+	url = https://github.com/coderaark12/Dice-Game-.git
