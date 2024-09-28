@@ -1,9 +1,9 @@
 [submodule "public_api_capstone_project"]
 	path = public_api_capstone_project
 	url = https://github.com/coderaark12/Joke-Time
-[submodule "Capstone_project_Book_Review"]
-	path = Capstone_project_Book_Review
-	url = https://github.com/coderaark12/Booklytic.git
 [submodule "Booklytic"]
 	path = Booklytic
 	url = https://github.com/coderaark12/Booklytic.git
+[submodule "Blog Writing Project"]
+	path = Blog Writing Project
+	url = https://github.com/coderaark12/Blog-API-Project.git
