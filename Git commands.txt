@@ -1,0 +1,46 @@
+# Basic Git Commands
+1. git init                          # Initialize a new Git repository
+2. git clone <repository_url>        # Clone an existing repository
+3. git add <file>                    # Stage a file for commit
+4. git add .                         # Stage all changes in the current directory
+5. git commit -m "message"           # Commit staged changes with a message
+6. git status                        # Check the status of the working directory
+7. git log                           # View commit history
+8. git diff                          # Show changes between commits, commit and working tree, etc.
+9. git checkout <branch_name>        # Switch to a specific branch
+10. git branch                        # List all branches in the repository
+11. git branch <new_branch>           # Create a new branch
+12. git merge <branch_name>          # Merge a branch into the current branch
+13. git pull                         # Fetch from remote and merge
+14. git push                         # Push local commits to remote repository
+
+# Intermediate Git Commands
+15. git remote -v                    # Show remote repositories
+16. git remote add <name> <url>      # Add a new remote repository
+17. git remote remove <name>         # Remove a remote repository
+18. git fetch                        # Fetch changes from remote without merging
+19. git reset <file>                 # Unstage a file
+20. git revert <commit_hash>         # Revert changes from a specific commit
+21. git cherry-pick <commit_hash>    # Apply changes from a specific commit onto the current branch
+22. git stash                        # Stash changes in the working directory
+23. git stash pop                    # Apply stashed changes and remove from stash
+24. git rebase <branch_name>         # Reapply commits on top of another base tip
+
+# Advanced Git Commands
+25. git tag <tag_name>               # Create a new tag
+26. git show <tag_name>              # Show details of a specific tag
+27. git reflog                       # Show reference logs
+28. git bisect                       # Use binary search to find a commit that introduced a bug
+29. git submodule add <url> <path>   # Add a new submodule
+30. git submodule update --init       # Initialize and update submodules
+31. git config --global user.name "Your Name"  # Set global username
+32. git config --global user.email "you@example.com"  # Set global email
+
+# Merge-Related Git Commands
+1. git merge <branch_name>                            # Merge the specified branch into the current branch
+2. git merge <branch_name> -m "Your merge message"   # Merge with a custom commit message
+3. git merge --no-ff <branch_name>                    # Create a merge commit even with fast-forward
+4. git merge --squash <branch_name>                   # Combine changes into a single commit
+5. git merge <branch_name> --allow-unrelated-histories # Merge branches that do not share a common history
+6. git merge --abort                                   # Abort the merge process if there are conflicts
+

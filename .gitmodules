@@ -1,3 +1,6 @@
 [submodule "public_api_capstone_project"]
 	path = public_api_capstone_project
 	url = https://github.com/coderaark12/Joke-Time
+[submodule "Capstone_project_Book_Review"]
+	path = Capstone_project_Book_Review
+	url = https://github.com/coderaark12/Booklytic.git

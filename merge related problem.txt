@@ -1,0 +1,11 @@
+git fetch origin
+
+git merge origin/main --allow-unrelated-histories
+
+git pull origin main --allow-unrelated-histories
+
+git push origin main
+
+
+// set default branch as main for all new repo on this machine
+git config --global --get init.defaultBranch
