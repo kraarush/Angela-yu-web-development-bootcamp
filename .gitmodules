@@ -16,3 +16,12 @@
 [submodule "Projects/Dice-Game"]
 	path = Projects/Dice-Game
 	url = https://github.com/coderaark12/Dice-Game-.git
+[submodule "Projects/Simon-Game"]
+	path = Projects/Simon-Game
+	url = https://github.com/coderaark12/Simon-Game.git
+[submodule "Projects/Family-Travel-Tracker"]
+	path = Projects/Family-Travel-Tracker
+	url = https://github.com/coderaark12/Family-Travel-Tracker.git
+[submodule "Projects/Todo-App"]
+	path = Projects/Todo-App
+	url = https://github.com/coderaark12/Todo-App.git
