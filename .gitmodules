@@ -7,3 +7,6 @@
 [submodule "Blog Writing Project"]
 	path = Blog Writing Project
 	url = https://github.com/coderaark12/Blog-API-Project.git
+[submodule "Drum Game"]
+	path = Drum Game
+	url = https://github.com/coderaark12/Simple-Drum-Game.git
