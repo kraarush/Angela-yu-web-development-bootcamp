@@ -4,3 +4,6 @@
 [submodule "Capstone_project_Book_Review"]
 	path = Capstone_project_Book_Review
 	url = https://github.com/coderaark12/Booklytic.git
+[submodule "Booklytic"]
+	path = Booklytic
+	url = https://github.com/coderaark12/Booklytic.git
