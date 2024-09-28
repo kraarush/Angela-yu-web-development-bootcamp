@@ -10,3 +10,6 @@
 [submodule "Drum Game"]
 	path = Drum Game
 	url = https://github.com/coderaark12/Simple-Drum-Game.git
+[submodule "Dice Game"]
+	path = Dice Game
+	url = https://github.com/coderaark12/Dice-Game-.git
