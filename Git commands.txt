@@ -44,3 +44,19 @@
 5. git merge <branch_name> --allow-unrelated-histories # Merge branches that do not share a common history
 6. git merge --abort                                   # Abort the merge process if there are conflicts
 
+
+To stop tracking file changes :--  git rm --cached file-path
+
+// set default branch as main for all new repo on this machine
+git config --global --get init.defaultBranch
+
+
+
+// merge solving queries
+git fetch origin
+git merge origin/main --allow-unrelated-histories
+git pull origin main --allow-unrelated-histories
+git push origin main
+
+
+

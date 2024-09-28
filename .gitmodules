@@ -13,6 +13,7 @@
 [submodule "Dice Game"]
 	path = Dice Game
 	url = https://github.com/coderaark12/Dice-Game-.git
-[submodule "EJS/4.4 Band Generator Project"]
-	path = EJS/4.4 Band Generator Project
+
+[submodule "Projects/Band Name Generator"]
+	path = Projects/Band Name Generator
 	url = https://github.com/coderaark12/Band-Name-Generator.git
