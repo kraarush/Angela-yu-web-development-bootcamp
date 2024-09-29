@@ -8,11 +8,20 @@
       <div class="card">
         <div class="card-body">
 
+          <h3 class="mb-3 text-danger text- text-center">
+            <% if(locals.ifExist == false){ %>
+              No User Found With The Given Email
+              <% } %>
+              <% if(locals.isCorrect == false){ %>
+                Incorrect Password Try again
+                <% } %>
+          </h3>
+
           <!-- Makes POST request to /login route -->
           <form action="/login" method="POST">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" name="username">
+              <input type="email" class="form-control" name="username" autofocus>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
