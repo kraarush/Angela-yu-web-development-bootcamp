@@ -25,3 +25,6 @@
 [submodule "Projects/Todo-App"]
 	path = Projects/Todo-App
 	url = https://github.com/coderaark12/Todo-App.git
+[submodule "Projects/QR-Code-Generator"]
+	path = Projects/QR-Code-Generator
+	url = https://github.com/coderaark12/QR-Code-Generator.git
