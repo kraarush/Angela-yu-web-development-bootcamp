@@ -103,9 +103,6 @@ app.post("/login", passport.authenticate('local', {
 
 passport.use(
   new Strategy(async function (username, password, cb) {
-    console.log(username);
-    console.log(password);
-
     try {
       const result = await db.query("select * from users where email = $1", [username]);
       console.log(result.rows);
@@ -136,7 +133,6 @@ passport.use(
 passport.serializeUser((user, cb) => {
   cb(null, user);
 });
-
 
 passport.deserializeUser((user, cb) => {
   cb(null, user);
