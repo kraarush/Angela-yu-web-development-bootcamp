@@ -18,6 +18,9 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    }
   })
 );
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,18 +59,31 @@ app.get("/logout", (req, res) => {
   });
 });
 
-app.get("/secrets", (req, res) => {
+app.get("/secrets", async (req, res) => {
+  console.log(req.user);
   if (req.isAuthenticated()) {
-    res.render("secrets.ejs");
-
-    //TODO: Update this to pull in the user secret to render in secrets.ejs
+    const user = await db.query("SELECT * FROM users WHERE email = $1", [req.user.email]);
+    if (user.rows[0].secret !== null) {
+      res.render("secrets.ejs", {secret: user.rows[0].secret});
+    }
+    else {
+      res.render("secrets.ejs", {secret: 'Welcome, You can start submitting your secret!!'});
+    }
   } else {
     res.redirect("/login");
   }
 });
 
+
 //TODO: Add a get route for the submit button
 //Think about how the logic should work with authentication.
+app.get('/submit', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render("submit.ejs");
+  } else {
+    res.redirect("/login");
+  }
+});
 
 app.get(
   "/auth/google",
@@ -114,7 +130,6 @@ app.post("/register", async (req, res) => {
           );
           const user = result.rows[0];
           req.login(user, (err) => {
-            console.log("success");
             res.redirect("/secrets");
           });
         }
@@ -127,6 +142,13 @@ app.post("/register", async (req, res) => {
 
 //TODO: Create the post route for submit.
 //Handle the submitted data and add it to the database
+app.post('/submit', async (req, res) => {
+  console.log(req.user);
+  const { secret } = req.body;
+  const result = await db.query('update users set secret = $1 where email = $2 returning *', [secret, req.user.email]);
+  req.user = result.rows[0];
+  res.redirect('/secrets');
+});
 
 passport.use(
   "local",
@@ -170,16 +192,16 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, cb) => {
       try {
-        console.log(profile);
         const result = await db.query("SELECT * FROM users WHERE email = $1", [
           profile.email,
         ]);
         if (result.rows.length === 0) {
-          const newUser = await db.query(
+          let newUser = await db.query(
             "INSERT INTO users (email, password) VALUES ($1, $2)",
             [profile.email, "google"]
           );
-          return cb(null, newUser.rows[0]);
+          newUser = newUser.rows[0];
+          return cb(null, newUser);
         } else {
           return cb(null, result.rows[0]);
         }
