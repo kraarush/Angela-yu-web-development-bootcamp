@@ -1,30 +1,30 @@
 [submodule "Projects/Band Name Generator"]
 	path = Projects/Band Name Generator
-	url = https://github.com/coderaark12/Band-Name-Generator.git
+	url = https://github.com/kraarush/Band-Name-Generator.git
 [submodule "Projects/Booklytic"]
 	path = Projects/Booklytic
-	url = https://github.com/coderaark12/Booklytic.git
+	url = https://github.com/kraarush/Booklytic.git
 [submodule "Projects/Joke-Time"]
 	path = Projects/Joke-Time
-	url = https://github.com/coderaark12/Joke-Time.git
+	url = https://github.com/kraarush/Joke-Time.git
 [submodule "Projects/Blog-Website"]
 	path = Projects/Blog-Website
-	url = https://github.com/coderaark12/Blog-API-Project.git
+	url = https://github.com/kraarush/Blog-API-Project.git
 [submodule "Projects/Drum-Game"]
 	path = Projects/Drum-Game
-	url = https://github.com/coderaark12/Simple-Drum-Game.git
+	url = https://github.com/kraarush/Simple-Drum-Game.git
 [submodule "Projects/Dice-Game"]
 	path = Projects/Dice-Game
-	url = https://github.com/coderaark12/Dice-Game-.git
+	url = https://github.com/kraarush/Dice-Game-.git
 [submodule "Projects/Simon-Game"]
 	path = Projects/Simon-Game
-	url = https://github.com/coderaark12/Simon-Game.git
+	url = https://github.com/kraarush/Simon-Game.git
 [submodule "Projects/Family-Travel-Tracker"]
 	path = Projects/Family-Travel-Tracker
-	url = https://github.com/coderaark12/Family-Travel-Tracker.git
+	url = https://github.com/kraarush/Family-Travel-Tracker.git
 [submodule "Projects/Todo-App"]
 	path = Projects/Todo-App
-	url = https://github.com/coderaark12/Todo-App.git
+	url = https://github.com/kraarush/Todo-App.git
 [submodule "Projects/QR-Code-Generator"]
 	path = Projects/QR-Code-Generator
-	url = https://github.com/coderaark12/QR-Code-Generator.git
+	url = https://github.com/kraarush/QR-Code-Generator.git
