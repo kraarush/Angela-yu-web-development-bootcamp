@@ -20,12 +20,12 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 const db = new pg.Client({
   user: process.env.PG_USER,
@@ -104,7 +104,6 @@ app.post("/register", async (req, res) => {
           );
           const user = result.rows[0];
           req.login(user, (err) => {
-            console.log("success");
             res.redirect("/secrets");
           });
         }
@@ -171,7 +170,7 @@ passport.use(new GoogleStrategy({
       }
     }
     catch(err){
-      console.log("Error at 176 line: " + err);
+      console.log("Error in google strategy " + err);
     }
   }
 ));
