@@ -28,3 +28,6 @@
 [submodule "Projects/QR-Code-Generator"]
 	path = Projects/QR-Code-Generator
 	url = https://github.com/kraarush/QR-Code-Generator.git
+[submodule "Projects/Keeper-project"]
+	path = Projects/Keeper-project
+	url = https://github.com/kraarush/Keeper-Project.git
