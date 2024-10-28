@@ -1,3 +1,5 @@
+import emojipedia from "./emojipedia";
+
 var numbers = [3, 56, 2, 48, 5];
 
 //Map -Create a new array by doing something with each item in an array.
@@ -10,8 +12,8 @@ var numbers = [3, 56, 2, 48, 5];
 
 //FindIndex - find the index of the first item that matches.
 
-// If you're running this locally in VS Code use the commands:
-// npm install
-// to install the node modules and
-// npm run dev
-// to launch your react project in your browser
+const newArray = emojipedia.map((index) => {
+    return index.meaning.substring(0,100);
+}); 
+
+console.log(newArray);
