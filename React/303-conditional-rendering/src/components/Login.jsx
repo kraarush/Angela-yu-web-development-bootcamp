@@ -1,11 +1,11 @@
 import React from "react";
 import Input from "./input";
 
-function Login() {
+function Login() {                                                              
   return (
     <form className="form">
         <Input type="text" placeholder="Email" />
-        <Input type="password" placeholder="password" />
+        <Input type="password" placeholder="Password" />
       <button type="submit">Login</button>
     </form>
   );
