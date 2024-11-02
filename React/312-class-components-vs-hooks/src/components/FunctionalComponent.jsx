@@ -6,7 +6,7 @@ function FunctionalComponent() {
   function increase() {
     setCount(count + 1);
   }
-
+  
   return (
     <div>
       <h1>{count}</h1>
